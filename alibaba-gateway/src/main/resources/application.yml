@@ -1,0 +1,29 @@
+#规划GateWay的服务端口
+server:
+  port: 10185
+##规划gateWay注册到到nacos上的服务应用名称
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        #gateway工程注册到nacos上的地址
+        server-addr: 192.168.111.129:8848
+    gateway:
+      discovery:
+        locator:
+          #开启gateway从nacos上获取服务列表
+          enabled: false
+  profiles:
+    active: xxxxx  # 具体的gateway配置
+#开启acutor端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      #打开端点详情
+      show-details: always

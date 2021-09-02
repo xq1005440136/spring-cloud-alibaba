@@ -1,12 +1,8 @@
 package com.md.conf;
 
 import com.md.model.UserInfo;
-import com.md.utils.SpringUtils;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @Author xiaoqiang
