@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserDao {
 
-   List<User> findAll();
+  List<User> findAll();
 
 }

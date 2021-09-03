@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService implements UserApi {
+
   @Autowired
   private UserDao userDao;
 

@@ -19,49 +19,60 @@ import java.util.NoSuchElementException;
 
 //Excel导入导出工具类
 public class ExcelExportUtils {
-  public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass, String fileName,
+
+  public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass,
+      String fileName,
       boolean isCreateHeader, HttpServletResponse response) {
     ExportParams exportParams = new ExportParams(title, sheetName);
     exportParams.setCreateHeadRows(isCreateHeader);
     defaultExport(list, pojoClass, fileName, response, exportParams);
   }
 
-  public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass, String fileName,
+  public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass,
+      String fileName,
       HttpServletResponse response) {
     defaultExport(list, pojoClass, fileName, response, new ExportParams(title, sheetName));
   }
 
-  public static void exportExcel(List<Map<String, Object>> list, String fileName, HttpServletResponse response) {
+  public static void exportExcel(List<Map<String, Object>> list, String fileName,
+      HttpServletResponse response) {
     defaultExport(list, fileName, response);
   }
 
-  private static void defaultExport(List<?> list, Class<?> pojoClass, String fileName, HttpServletResponse response,
+  private static void defaultExport(List<?> list, Class<?> pojoClass, String fileName,
+      HttpServletResponse response,
       ExportParams exportParams) {
     Workbook workbook = ExcelExportUtil.exportExcel(exportParams, pojoClass, list);
-    if (workbook != null)
+    if (workbook != null) {
       ;
+    }
     downLoadExcel(fileName, response, workbook);
   }
 
-  private static void downLoadExcel(String fileName, HttpServletResponse response, Workbook workbook) {
+  private static void downLoadExcel(String fileName, HttpServletResponse response,
+      Workbook workbook) {
     try {
       response.setCharacterEncoding("UTF-8");
       response.setHeader("content-Type", "application/vnd.ms-excel");
-      response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
+      response.setHeader("Content-Disposition",
+          "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
       workbook.write(response.getOutputStream());
     } catch (IOException e) {
       // throw new NormalException(e.getMessage());
     }
   }
 
-  private static void defaultExport(List<Map<String, Object>> list, String fileName, HttpServletResponse response) {
+  private static void defaultExport(List<Map<String, Object>> list, String fileName,
+      HttpServletResponse response) {
     Workbook workbook = ExcelExportUtil.exportExcel(list, ExcelType.HSSF);
-    if (workbook != null)
+    if (workbook != null) {
       ;
+    }
     downLoadExcel(fileName, response, workbook);
   }
 
-  public static <T> List<T> importExcel(String filePath, Integer titleRows, Integer headerRows, Class<T> pojoClass) {
+  public static <T> List<T> importExcel(String filePath, Integer titleRows, Integer headerRows,
+      Class<T> pojoClass) {
     if (StringUtils.isBlank(filePath)) {
       return null;
     }

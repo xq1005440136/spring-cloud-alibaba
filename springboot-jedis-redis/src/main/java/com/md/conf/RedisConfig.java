@@ -19,8 +19,7 @@ import redis.clients.jedis.JedisPoolConfig;
 @Slf4j
 public class RedisConfig {
 
- private  JedisPool jedisPool;
-
+  private JedisPool jedisPool;
 
 
   @Bean
@@ -41,7 +40,7 @@ public class RedisConfig {
   }
 
   @Bean
-  public   JedisPool jedisPool(@Value("${jedis.host}") String host,
+  public JedisPool jedisPool(@Value("${jedis.host}") String host,
       @Value("${jedis.password}") String password,
       @Value("${jedis.port}") int port,
       @Value("${jedis.timeout}") int timeout, JedisPoolConfig jedisPoolConfig) {
@@ -53,7 +52,8 @@ public class RedisConfig {
 
     return new JedisPool(jedisPoolConfig, host, port, timeout);
   }
-  public static JedisPool getJedisPool(){
+
+  public static JedisPool getJedisPool() {
     JedisPool jedisPool = SpringUtil.getBean("jedisPool", JedisPool.class);
     return jedisPool;
   }

@@ -22,7 +22,7 @@ public class ClientApplication {
     ConfigurableApplicationContext run = SpringApplication.run(ClientApplication.class, args);
     String[] beans = run.getBeanNamesForType(EnableConfig.class);
     for (String bean : beans) {
-      log.info("bean 的名称是： ====="+bean);
+      log.info("bean 的名称是： =====" + bean);
     }
   }
 }

@@ -7,5 +7,6 @@ package com.md.cloud.api;
  */
 
 public interface EchoConsumerApi {
+
   String getAliababa();
 }

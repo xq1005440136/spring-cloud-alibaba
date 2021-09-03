@@ -25,17 +25,17 @@ public class EchoController {
 
 
   @RequestMapping(value = "/getAlibaba")
-  public String getAlibabba(){
+  public String getAlibabba() {
     return echoApi.getAlibaba();
   }
 
   @RequestMapping(value = "getConfig")
-  public String getConfig(){
+  public String getConfig() {
     return echoApi.getConfig();
   }
 
   @RequestMapping(value = "getEmail")
-  public String getEmail(){
+  public String getEmail() {
     return email;
   }
 

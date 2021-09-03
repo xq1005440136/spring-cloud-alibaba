@@ -28,11 +28,11 @@ public class SpringUtils implements ApplicationContextAware, InitializingBean {
   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
     this.applicationContext = applicationContext;
     EnableConfig bean = applicationContext.getBean(EnableConfig.class);
-    log.info("bean被实例化了====================="+bean);
+    log.info("bean被实例化了=====================" + bean);
     String[] activeProfiles = env.getActiveProfiles();
     log.info("初始化spring容器");
     for (String activeProfile : activeProfiles) {
-      System.out.println("激活的配置文件是"+activeProfile);
+      System.out.println("激活的配置文件是" + activeProfile);
     }
   }
 
@@ -40,7 +40,6 @@ public class SpringUtils implements ApplicationContextAware, InitializingBean {
   public void afterPropertiesSet() throws Exception {
 
   }
-
 
 
 }

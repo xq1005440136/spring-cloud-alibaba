@@ -9,6 +9,7 @@ import javax.naming.directory.SearchResult;
  * @Version 1.0
  */
 public class ResultReturn<T> implements Serializable {
+
   private Integer msg;
   private String content;
   private T t;

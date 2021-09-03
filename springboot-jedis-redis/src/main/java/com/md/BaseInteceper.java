@@ -22,9 +22,9 @@ public class BaseInteceper implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
-    if(StringUtils.isBlank(request.getHeader("loginType"))){
-       returnJsonError(request,response,"用户账号已在别处登录！");
-       return false;
+    if (StringUtils.isBlank(request.getHeader("loginType"))) {
+      returnJsonError(request, response, "用户账号已在别处登录！");
+      return false;
     }
     return true;
   }

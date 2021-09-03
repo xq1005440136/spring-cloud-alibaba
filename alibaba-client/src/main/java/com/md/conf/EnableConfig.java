@@ -16,10 +16,10 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class EnableConfig {
 
-    @Bean(initMethod = "init" ,destroyMethod = "destroy",name = "template")
-    public UserInfo restTemplate(){
-      return new UserInfo();
-    }
+  @Bean(initMethod = "init", destroyMethod = "destroy", name = "template")
+  public UserInfo restTemplate() {
+    return new UserInfo();
   }
+}
 
 

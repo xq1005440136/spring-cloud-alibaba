@@ -15,18 +15,18 @@ import lombok.Data;
 @ExcelTarget("20")
 public class User {
 
-  @Excel(name="id",width = 20)
+  @Excel(name = "id", width = 20)
   private Long id;
-  @Excel(name="姓名",width = 20)
+  @Excel(name = "姓名", width = 20)
   private String userName;
   @JsonView(value = ViewPassword.class)
   private String password;
   private Integer loginType;
-  @Excel(name="性别",width = 10)
+  @Excel(name = "性别", width = 10)
   private Integer gender;
-  @Excel(name="地址",width = 50)
+  @Excel(name = "地址", width = 50)
   private String address;
-  @Excel(name="电话号码",width = 30)
+  @Excel(name = "电话号码", width = 30)
   private String phoneNumber;
 
 

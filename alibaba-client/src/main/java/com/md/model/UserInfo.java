@@ -38,11 +38,11 @@ public class UserInfo {
     this.sex = sex;
   }
 
-  public void init(){
+  public void init() {
     System.out.println("初始化bean的方法执行了");
   }
 
-  public void destroy(){
+  public void destroy() {
     System.out.println("摧毁bean的方法执行了");
   }
 

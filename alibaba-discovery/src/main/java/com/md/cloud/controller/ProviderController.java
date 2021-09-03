@@ -24,22 +24,18 @@ public class ProviderController {
 
   @Autowired
   private EchoConsumerApi echoConsumerApi;
+
   @RequestMapping(value = "/getAlibaba")
-  public String getAlibaba(){
+  public String getAlibaba() {
     return echoConsumerApi.getAliababa();
 
   }
+
   @RequestMapping(value = "/provide/getConfig")
-  public String getConfig(){
-  return appKey;
+  public String getConfig() {
+    return appKey;
 
   }
-
-
-
-
-
-
 
 
 }

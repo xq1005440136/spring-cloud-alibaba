@@ -16,9 +16,9 @@ import org.springframework.web.client.RestTemplate;
 public class HttpConfig {
 
   @Bean
-  @ConditionalOnMissingBean(name="restTemplate")
+  @ConditionalOnMissingBean(name = "restTemplate")
   @LoadBalanced
-  public RestTemplate restTemplate(){
+  public RestTemplate restTemplate() {
 
     return new RestTemplate();
   }

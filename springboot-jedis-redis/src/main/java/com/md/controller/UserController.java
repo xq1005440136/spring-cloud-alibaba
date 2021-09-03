@@ -27,14 +27,12 @@ public class UserController {
   private HttpServletResponse response;
 
   @RequestMapping(value = "export")
-  public void excelExport(){
-    System.out.println("response======================="+response);
+  public void excelExport() {
+    System.out.println("response=======================" + response);
     List<User> userList = userApi.findAll();
-    ExcelExportUtils.exportExcel(userList,"人员信息","人员信息表",User.class,"信息统计.xls",response);
+    ExcelExportUtils.exportExcel(userList, "人员信息", "人员信息表", User.class, "信息统计.xls", response);
 
   }
-
-
 
 
 }

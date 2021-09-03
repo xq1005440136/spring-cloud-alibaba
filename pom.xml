@@ -10,6 +10,12 @@
   <modules>
     <module>alibaba-discovery</module>
     <module>alibaba-client</module>
+    <module>dubbo-api</module>
+    <module>demo</module>
+    <module>dubbo-service-consumer</module>
+    <module>dubbo-service-provider</module>
+    <module>springboot-kafka</module>
+    <module>springboot-jedis-redis</module>
   </modules>
   <packaging>pom</packaging>
   <properties>
@@ -19,7 +25,10 @@
     <lombok.version>1.16.20</lombok.version>
     <spring-boot.version>2.3.9.RELEASE</spring-boot.version>
     <commonl.lang3.version>3.9</commonl.lang3.version>
-  </properties>  <dependencyManagement>
+    <dubbo.version>2.7.7</dubbo.version>
+    <curator.version>2.13.0</curator.version>
+  </properties>
+  <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>com.alibaba.cloud</groupId>
@@ -56,6 +65,58 @@
         <version>${commonl.lang3.version}</version>
       </dependency>
 
+      <!-- 实现对 Dubbo 的自动化配置 -->
+<!--      <dependency>-->
+<!--        <groupId>org.apache.dubbo</groupId>-->
+<!--        <artifactId>dubbo</artifactId>-->
+<!--        <version>${dubbo.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+<!--      <dependency>-->
+<!--        <groupId>org.apache.dubbo</groupId>-->
+<!--        <artifactId>dubbo-spring-boot-starter</artifactId>-->
+<!--        <version>${dubbo.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+
+      <!-- 使用 Zookeeper 作为注册中心 -->
+<!--      <dependency>-->
+<!--        <groupId>org.apache.curator</groupId>-->
+<!--        <artifactId>curator-framework</artifactId>-->
+<!--        <version>${curator.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+<!--      <dependency>-->
+<!--        <groupId>org.apache.curator</groupId>-->
+<!--        <artifactId>curator-recipes</artifactId>-->
+<!--        <version>${curator.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+      <!--zookeeper 注册中心客户端引入 使用的是curator客户端 -->
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-zookeeper</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <!-- dubbo 2.7.x引入-->
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-spring-boot-starter</artifactId>
+        <version>${dubbo.version}</version>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
