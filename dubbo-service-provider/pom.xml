@@ -104,23 +104,28 @@
     </dependency>
 
     <!-- Spring Boot Mybatis 依赖 -->
-    <dependency>
-      <groupId>org.mybatis.spring.boot</groupId>
-      <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>${mybatis.spring-boot}</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.mybatis.spring.boot</groupId>-->
+<!--      <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--      <version>${mybatis.spring-boot}</version>-->
+<!--    </dependency>-->
 
     <!-- MySQL 连接驱动依赖 -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql.connector}</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>mysql</groupId>-->
+<!--      <artifactId>mysql-connector-java</artifactId>-->
+<!--      <version>${mysql.connector}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
       <version>1.2.30</version>
+    </dependency>
+    <dependency>
+      <groupId>com.md</groupId>
+      <artifactId>dubbo-api</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

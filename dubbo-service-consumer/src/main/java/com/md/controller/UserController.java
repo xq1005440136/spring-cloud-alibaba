@@ -1,7 +1,7 @@
 package com.md.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.md.UserAPi;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/user")
 public class UserController {
 
-  @Reference
+//  @Reference
+  @DubboReference
   private UserAPi userAPi;
 
   @RequestMapping(value = "/get")

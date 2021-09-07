@@ -2,75 +2,131 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>springcloud-alibaba</artifactId>
-    <groupId>com.md</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+<!--  <parent>-->
+<!--    <artifactId>springcloud-alibaba</artifactId>-->
+<!--    <groupId>com.md</groupId>-->
+<!--    <version>1.0-SNAPSHOT</version>-->
+<!--  </parent>-->
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>dubbo-service-consumer</artifactId>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+    <dubbo.version>2.7.7</dubbo.version>
+    <mysql.connector>5.1.39</mysql.connector>
+    <mybatis.spring-boot>2.0.0</mybatis.spring-boot>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Spring Boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- Aapche Dubbo  -->
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-bom</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.4.RELEASE</version>
+  </parent>
   <dependencies>
+
+    <!-- spring boot web -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
+
+    <!-- Dubbo Spring Boot Starter-->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-      <scope>provided</scope>
+      <groupId>org.apache.dubbo</groupId>
+      <artifactId>dubbo-spring-boot-starter</artifactId>
+      <version>${dubbo.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
+      <groupId>org.apache.dubbo</groupId>
+      <artifactId>dubbo</artifactId>
+    </dependency>
+
+    <!-- Zookeeper dependencies -->
+    <dependency>
+      <groupId>org.apache.dubbo</groupId>
+      <artifactId>dubbo-dependencies-zookeeper</artifactId>
+      <version>${dubbo.version}</version>
+      <type>pom</type>
+    </dependency>
+
+
+
+    <!-- Spring Boot Test 依赖 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Spring Boot Mybatis 依赖 -->
+    <!--    <dependency>-->
+    <!--      <groupId>org.mybatis.spring.boot</groupId>-->
+    <!--      <artifactId>mybatis-spring-boot-starter</artifactId>-->
+    <!--      <version>${mybatis.spring-boot}</version>-->
+    <!--    </dependency>-->
+
+    <!-- MySQL 连接驱动依赖 -->
+    <!--    <dependency>-->
+    <!--      <groupId>mysql</groupId>-->
+    <!--      <artifactId>mysql-connector-java</artifactId>-->
+    <!--      <version>${mysql.connector}</version>-->
+    <!--    </dependency>-->
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.30</version>
     </dependency>
     <dependency>
       <groupId>com.md</groupId>
       <artifactId>dubbo-api</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
-
-<!--    <dependency>-->
-<!--      <groupId>com.md</groupId>-->
-<!--      <artifactId>common</artifactId>-->
-<!--      <version>0.0.1-SNAPSHOT</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.dubbo</groupId>-->
-<!--      <artifactId>dubbo</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.dubbo</groupId>-->
-<!--      <artifactId>dubbo-spring-boot-starter</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.curator</groupId>-->
-<!--      <artifactId>curator-framework</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.curator</groupId>-->
-<!--      <artifactId>curator-recipes</artifactId>-->
-<!--    </dependency>-->
-    <!--    dubbo依赖-->
-    <dependency>
-      <groupId>com.alibaba.boot</groupId>
-      <artifactId>dubbo-spring-boot-starter</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <!--zookeeper 注册中心客户端引入 使用的是curator客户端 -->
-    <dependency>
-      <groupId>com.101tec</groupId>
-      <artifactId>zkclient</artifactId>
-      <version>0.2</version>
-    </dependency>
-
   </dependencies>
 
   <build>
