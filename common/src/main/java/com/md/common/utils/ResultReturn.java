@@ -93,12 +93,27 @@ public class ResultReturn<T> implements Serializable {
 
   public ResultReturn() {
   }
+  public ResultReturn(T t){
+    this.setRespData(t);
+    this.setContent("操作成功");
+    this.setMsg(ReturnCode.R201);
+  }
+  public ResultReturn(String url,String msg){
+    this.setContent(msg);
+    this.setRefUrl(url);
+    this.setMsg(ReturnCode.R201);
+  }
 
   public ResultReturn(Integer msg, String content, T t) {
     this.msg = msg;
     this.content = content;
     this.t = t;
   }
+  public ResultReturn(Integer msg, String content) {
+    this.msg = msg;
+    this.content = content;
+  }
+
 
   public ResultReturn(String content) {
     this.msg = ReturnCode.R404;
@@ -112,9 +127,42 @@ public class ResultReturn<T> implements Serializable {
     this.t = t;
   }
 
+
   public ResultReturn(String content, String ssoId, String ssoValue) {
     this.content = content;
     this.ssoId = ssoId;
     this.ssoValue = ssoValue;
+  }
+
+  public static <T>ResultReturn<T> success(T t){
+    return new ResultReturn<>(t);
+  }
+  public static <T>ResultReturn<T> success(String url,T t){
+    return new ResultReturn<>(url,t);
+  }
+
+  public static <T>ResultReturn<T> successUrl(String url){
+    return new ResultReturn<>(url,"success");
+  }
+
+  public static <T>ResultReturn<T> successUrl(String url,T t){
+    return new ResultReturn<>(url,t);
+  }
+
+  public static <T>ResultReturn<T> success(String msg){
+    return new ResultReturn<>(ReturnCode.R201,msg);
+  }
+
+  public static <T> ResultReturn <T> error(String msg,T t){
+    return new ResultReturn<>(ReturnCode.R302,msg,t);
+  }
+  public static <T> ResultReturn <T> errorCode(Integer code,String msg){
+    return new ResultReturn<>(code,msg);
+  }
+  public static <T> ResultReturn<T> error(String msg){
+    return new ResultReturn<>(ReturnCode.R302,msg);
+  }
+
+  public static class DefaultView {
   }
 }
